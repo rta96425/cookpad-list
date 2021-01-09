@@ -1,0 +1,20 @@
+[
+    {
+      "image": "rta96425/food",
+      "name": "food",
+      "cpu": 128,
+      "memory": 500,
+      "essential": true,
+      "entryPoint": [
+        "/bin/sh",
+        "-c"
+      ],
+      "environment": [],
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80
+        }
+      ]
+    }
+]

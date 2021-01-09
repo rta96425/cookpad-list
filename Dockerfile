@@ -1,14 +1,15 @@
-FROM alpine:latest
+FROM python:3.6
 
-RUN apk add --no-cache python3-dev \
-    && pip3 install --upgrade pip
+ARG project_dir=/app/
+ARG template_dir=/app/templates/
 
-WORKDIR /app
+ADD requirements.txt $project_dir
+ADD reply.py $project_dir
+ADD templates/index.html $template_dir
 
-COPY . /app
+WORKDIR $project_dir
 
-RUN pip3 --no-cache-dir install -r requirements.txt
+RUN pip install flask
+RUN pip install -r requirements.txt
 
-EXPOSE 5000
-
-CMD ["python3", "app.py"]
+CMD ["python", "reply.py"]
